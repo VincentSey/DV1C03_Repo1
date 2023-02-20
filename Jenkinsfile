@@ -6,7 +6,7 @@ pipeline {
         stage('Verify Branch') {
             
             steps {
-                echo "$main"
+                echo "$master"
             } 
             echo "Verify Branch:)"
         }
