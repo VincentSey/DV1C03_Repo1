@@ -1,58 +1,44 @@
 pipeline {
-    agent any
-
+    agent {
     stages {
-        /*
-        stage('Verify Branch') {
-            
-            steps {
-                echo "$master"
-            } 
-            echo "Verify Branch:)"
-        }
-        */
-        stage('Start build & test app') {
-            steps {
-                sh(script:"""
-                    docker run -d -it -p 42000:8080 --name=rp_container rp_image /bin/sh
-                    docker rm -f rp_container
-                """)
-            }
-            post {
-                success {
-                    echo "App Started successfully :)"
-                }
-                failure {
-                    echo "App failed to start :("
-                }
-            }
-            
-        }
+       stage('Stage1_22053098') {
+           steps {
+               echo "S1_22053098 : Environment Preparation Completed"
+           } 
+       }
         
-        // stage('Run trivy') {
-        //     steps {
-        //        sh(script:"""
-        //             trivy prasadzende/sample_repo:credit_cls     
-        //        """)
-        //     }            
-        // }
-        
-         stage('Exit'){
-            steps{
-                 input('Do you want to proceed?')   
-//                 when{
-//                     not{
-                          echo "Work Released - 22050023"  
-//                     }
-//               }
+       stage('Stage2_22053098') {
+           steps {
+                echo "S2_22053098 : Web Server Creation Completed"
            }
-//             steps{
-//                 sh(script:"""
-//                      exit 1    
-//                  """)
-              }
-           
-//         }
+       }
+       
+      stage('Parallel'){
+          parallel{
+              stage('Stage3_22053098') {
+                 steps {
+                    echo "S3_22053098 : API Test Completed"
+                 } 
+              }   
+              stage('Stage4_22053098') {
+                 steps {
+                    echo "S4_22053098 : Dast Security Test Completed"
+                 } 
+              }  
+          }
+      }
+ 
+      stage('Stage5_22053098') {
+           steps {
+               input('Do you want to release the work?') 
+           } 
+       }
+       
+       stage('Stage6_22053098'){
+           steps{
+                 echo "Work Released - 22053098"  
+           }
+       }
     }
 }
 
