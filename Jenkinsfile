@@ -13,7 +13,7 @@ pipeline {
            }
        }
        
-      stage('Parallel'){
+      stage('Three and Four'){
           parallel{
               stage('Stage3_22053098') {
                  steps {
