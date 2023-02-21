@@ -30,16 +30,19 @@ pipeline {
  
       stage('Stage5_22053098') {
            steps {
-               Prompt: Do you want to release the work?
+               Input('Do you want to release the work?')
            } 
        }
        
        stage('Stage6_22053098'){
            steps{ 
-              If Proceed, echo "Work Released - 22053098"
+               If Proceed { 
+                  echo "Work Released - 22053098"
                else {
                    abort {
            }
+         }
        }
+     }         
     }
   }
