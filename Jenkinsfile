@@ -30,7 +30,7 @@ pipeline {
  
       stage('Stage5_22053098') {
            steps {
-               Input('Do you want to release the work?')
+               input('Do you want to release the work?')
            } 
        }
        
